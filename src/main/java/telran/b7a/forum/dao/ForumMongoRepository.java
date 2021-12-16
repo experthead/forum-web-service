@@ -16,6 +16,6 @@ public interface ForumMongoRepository extends MongoRepository<Post, String> {
 	@Query(value = "{ tags: {$in: ?0}}")
 	public Stream<Post> findPostsByTags(List<String> tags);
 
-	public Stream<Post> findByDateCreatedBetween(LocalDateTime from, LocalDateTime to);
-
+	@Query(value = "{ dateCreated: {$gte: ?0, $lt: ?1}}")
+	public Stream<Post> findPostsByDateCreated(LocalDateTime from, LocalDateTime to);
 }

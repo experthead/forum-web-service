@@ -102,7 +102,7 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public List<ContentDto> findPostsByPeriod(DateRangeDto date) {
-		return forumRepository.findByDateCreatedBetween(date.dateTimeFrom(), date.dateTimeTo())
+		return forumRepository.findPostsByDateCreated(date.dateTimeFrom(), date.dateTimeTo())
 				.map(post -> modelMapper.map(post, ContentDto.class)).collect(Collectors.toList());
 	}
 
